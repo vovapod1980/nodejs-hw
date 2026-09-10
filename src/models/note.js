@@ -14,27 +14,11 @@ const noteSchema = new Schema(
       trim: true,
       default: '',
     },
-
-    tag: {
-      type: String,
-      required: false,
-      enum: [
-        'Work',
-        'Personal',
-        'Meeting',
-        'Shopping',
-        'Ideas',
-        'Travel',
-        'Finance',
-        'Health',
-        'Important',
-        'Todo',
-      ],
-      default: 'Todo',
-    },
   },
   {
     timestamps: true,
   },
 );
+
+noteSchema.index({ tag: 1 });
 export const Note = model('Note', noteSchema);
