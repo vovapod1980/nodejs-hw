@@ -10,6 +10,7 @@ import notesRoutes from './routes/notesRoutes.js';
 import { errors } from 'celebrate';
 import authRoutes from './routes/authRoutes.js';
 import cookieParser from 'cookie-parser';
+import userRoutes from './routes/userRoutes.js';
 
 dns.setServers(['8.8.8.8', '8.8.4.4']);
 
@@ -20,9 +21,9 @@ app.use(logger);
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
-app.use(authRoutes);
-
 app.use(notesRoutes);
+app.use(authRoutes);
+app.use(userRoutes);
 app.use(notFoundHandler);
 app.use(errors());
 app.use(errorHandler);
